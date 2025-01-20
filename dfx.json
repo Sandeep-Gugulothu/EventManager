@@ -1,0 +1,36 @@
+{
+  "canisters": {
+    
+
+    "types": {
+      "main": "backend/types.mo",
+      "type": "motoko"
+      
+    },
+    "payment_handler": {
+      "main": "backend/payment-handler.mo",
+      "type": "motoko"
+    },
+    "event_manager": {
+      "main": "backend/event-manager.mo",
+      "type": "motoko"
+    },
+    "trading": {
+      "main": "backend/trading.mo",
+      "type": "motoko"
+    }
+    },
+    "frontend": {
+      "dependencies": ["backend"],
+      "type": "assets",
+      "source": ["dist/"]
+    },
+  "defaults": {
+    "build": {
+      "packtool": "npm run --silent sources"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 2
+}
+
