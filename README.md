@@ -1,54 +1,247 @@
-# Vite + React + Motoko
+# Event Management App
 
-### Get started directly in your browser:
+An intuitive Event Management Application designed to streamline the process of discovering, managing, and registering for events. Built with the goal of simplicity and flexibility, this app offers a responsive interface and core features to handle events effectively.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
+---
 
-This template gives you everything you need to build a full-stack Web3 application on the [Internet Computer](https://internetcomputer.org/).
+## Features
 
-For an example of a real-world dapp built using this starter project, check out the [source code](https://github.com/dfinity/feedback) for DFINITY's [Developer Experience Feedback Board](https://dx.internetcomputer.org/).
+### 1. **Event Browsing**
+- Discover events from various categories, including conferences, workshops, meetups, and social gatherings.
+- Filter events based on categories and search terms to find relevant events effortlessly.
 
-## 📦 Create a New Project
+### 2. **Event Details**
+- View detailed information for each event, including:
+  - Event title and description
+  - Date and location
+  - Capacity and remaining spots
+  - Registration fees
 
-Make sure that [Node.js](https://nodejs.org/en/) `>= 16` and [`dfx`](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove) `>= 0.14` are installed on your system.
+### 3. **Registration System**
+- Users can register for events with a single click.
+- Seamless confirmation process ensures simplicity and speed.
 
-Run the following commands in a new, empty project directory:
+### 4. **Event Creation**
+- Organizers can create new events by filling in key details such as title, description, date, location, category, capacity, and price.
+- Categories include predefined options like "conference," "workshop," and "meetup."
 
-```sh
-npx degit rvanasa/vite-react-motoko # Download this starter project
-dfx start --clean --background # Run dfx in the background
-npm run setup # Install packages, deploy canisters, and generate type bindings
+### 5. **Responsive Design**
+- The application is designed to work seamlessly on all screen sizes, from desktops to mobile devices.
 
-npm start # Start the development server
+---
+
+## Usage of Internet Computer Protocol (ICP)
+The Event Management App leverages the **Internet Computer Protocol (ICP)** to enhance functionality and scalability:
+
+### Key ICP Features:
+1. **Decentralized Hosting**
+   - Events and user data are stored on a decentralized network, ensuring reliability and minimizing downtime.
+
+2. **Scalability**
+   - The app can handle a growing number of users and events without performance degradation, thanks to ICP's efficient scaling capabilities.
+
+3. **Data Security**
+   - ICP’s blockchain-based architecture ensures that event data is secure, tamper-proof, and transparent.
+
+4. **Smart Contract Integration**
+   - Event registration and ticketing processes are automated using smart contracts, enabling trustless transactions.
+
+5. **Low Costs**
+   - Hosting and running the application on ICP significantly reduce operational costs compared to traditional cloud services.
+
+---
+
+## Currently we only implemented the part of the idea due to time constraint there could be lot more enhancements made
+
+---
+
+## Contributions
+Contributions are welcome! Feel free to fork the repository, create feature branches, and submit pull requests.
+
+---
+
+## License
+This project is licensed under the MIT License.
+
+
+
+## Prerequisites
+
+- [DFX SDK](https://sdk.dfinity.org/docs/quickstart/local-quickstart.html) (version 0.9.0 or higher)
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [Git](https://git-scm.com/)
+
+## Project Structure
+
+```
+event-ticket-system/
+├── src/
+│   ├── types.mo
+│   ├── payment_handler.mo
+│   ├── event_manager.mo
+│   └── trading.mo
+├── dfx.json
+└── README.md
 ```
 
-When ready, run `dfx deploy --network ic` to deploy your application to the Internet Computer.
+## Setup Instructions
 
-## 🛠️ Technology Stack
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/event-ticket-system.git
+cd event-ticket-system
+```
 
-- [Vite](https://vitejs.dev/): high-performance tooling for front-end web development
-- [React](https://reactjs.org/): a component-based UI library
-- [TypeScript](https://www.typescriptlang.org/): JavaScript extended with syntax for types
-- [Sass](https://sass-lang.com/): an extended syntax for CSS stylesheets
-- [Prettier](https://prettier.io/): code formatting for a wide range of supported languages
-- [Motoko](https://github.com/dfinity/motoko#readme): a safe and simple programming language for the Internet Computer
-- [Mops](https://mops.one): an on-chain community package manager for Motoko
-- [mo-dev](https://github.com/dfinity/motoko-dev-server#readme): a live reload development server for Motoko
-- [@ic-reactor](https://github.com/B3Pay/ic-reactor): A suite of JavaScript libraries for seamless frontend development on the Internet Computer
+2. Install dependencies:
+```bash
+npm install
+```
 
-## 📚 Documentation
+3. Start the local Internet Computer replica:
+```bash
+dfx start --clean --background
+```
 
-- [Vite developer docs](https://vitejs.dev/guide/)
-- [React quick start guide](https://react.dev/learn)
-- [Internet Computer docs](https://internetcomputer.org/docs/current/developer-docs/ic-overview)
-- [`dfx.json` reference schema](https://internetcomputer.org/docs/current/references/dfx-json-reference/)
-- [Motoko developer docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/)
-- [Mops usage instructions](https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/#/docs/install)
-- [@ic-reactor/react](https://b3pay.github.io/ic-reactor/modules/react.html)
+4. Deploy the canisters:
+```bash
+dfx deploy
+```
 
-## 💡 Tips and Tricks
+## Configuration
 
-- Customize your project's code style by editing the `.prettierrc` file and then running `npm run format`.
-- Reduce the latency of update calls by passing the `--emulator` flag to `dfx start`.
-- Install a Motoko package by running `npx ic-mops add <package-name>`. Here is a [list of available packages](https://mops.one/).
-- Split your frontend and backend console output by running `npm run frontend` and `npm run backend` in separate terminals.
+1. Update your `dfx.json`:
+```json
+{
+  "canisters": {
+    "types": {
+      "main": "src/types.mo",
+      "type": "motoko"
+    },
+    "payment_handler": {
+      "main": "src/payment_handler.mo",
+      "type": "motoko"
+    },
+    "event_manager": {
+      "main": "src/event_manager.mo",
+      "type": "motoko"
+    },
+    "trading": {
+      "main": "src/trading.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "vessel sources",
+      "args": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
+```
+
+2. After deployment, update the canister IDs in the code:
+   - Note the canister IDs from the deployment output
+   - Update the actor references in `trading.mo` and `event_manager.mo`
+
+## Usage Examples
+
+### Creating an Event
+
+```motoko
+// Create a new event
+let event_result = await event_manager.createEvent(
+    "Concert 2025",
+    "Annual summer concert",
+    Time.now() + 7 * 24 * 60 * 60 * 1000000000, // 7 days from now
+    1000, // total tickets
+    100 // base price
+);
+```
+
+### Purchasing Tickets
+
+```motoko
+// Purchase a ticket
+let purchase_result = await event_manager.purchaseTicket(eventId);
+
+// Batch purchase
+let batch_result = await event_manager.batchPurchaseTickets(eventId, 5);
+```
+
+### Reselling Tickets
+
+```motoko
+// List ticket for resale
+let listing_result = await trading.listTicketForResale(tokenId, eventId, 150);
+
+// Purchase resale ticket
+let resale_purchase = await trading.purchaseResaleTicket(tokenId);
+```
+
+## Testing
+
+1. Run the test suite:
+```bash
+dfx test
+```
+
+2. Test specific functionality:
+```bash
+dfx canister call event_manager createEvent '(record { name = "Test Event"; description = "Test Description"; date = 1735689600000000000; totalTickets = 100; basePrice = 50 })'
+```
+
+## Intercanister Communication
+
+The system uses actor interfaces for communication between canisters:
+- Event Manager ↔ Payment Handler
+- Trading System ↔ Event Manager
+- Trading System ↔ Payment Handler
+
+## Security Considerations
+
+- All financial transactions are handled by the Payment Handler
+- Ticket ownership is verified before transfers
+- Event status is checked before operations
+- Payment verification is required for all purchases
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **Deployment Failures**
+   ```bash
+   dfx stop
+   dfx start --clean --background
+   dfx deploy
+   ```
+
+2. **Canister ID Issues**
+   - Verify canister IDs in the code match deployed canisters
+   - Check `dfx.json` configuration
+
+3. **Payment Processing Errors**
+   - Ensure sufficient balance in payment handler
+   - Verify proper principal IDs
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -am 'Add new feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support and questions, please open an issue in the GitHub repository or contact the development team.
